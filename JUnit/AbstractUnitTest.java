@@ -15,11 +15,6 @@ public class AbstractUnitTest {
         public AbstractUnitImpl(String name) {
             super(name);
         }
-
-        @Override
-        public Object clone() {
-            return null;
-        }
     }
 
     private AbstractUnit unit;
@@ -67,11 +62,14 @@ public class AbstractUnitTest {
     @Test
     public void testAdd() {
         for (int i = 0; i < childNodes.size(); i++) {
-            unit.add(childNodes.get(i));
-            assertTrue("AbstractUnit.add() should add the unit if it was not a child node previously!",
+            assertTrue("AbstractUnit.add() should return true if the unit is to be added!",
+                    unit.add(childNodes.get(i)));
+            assertTrue(
+                    "AbstractUnit.add() should add the unit if it was not a child node previously!",
                     unit.getChildNodes().contains(childNodes.get(i)));
 
-            unit.add(childNodes.get(i));
+            assertFalse("AbstractUnit.add() should return false if the unit is not to be added!",
+                    unit.add(childNodes.get(i)));
             assertTrue("AbstractUnit.add() should not add the unit if it is a child node!",
                     unit.getChildNodes().size() == i + 1);
         }

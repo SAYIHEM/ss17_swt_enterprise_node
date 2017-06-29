@@ -10,11 +10,6 @@ public class AbstractEnterpriseUnitTest {
         public AbstractEnterpriseUnitImpl(String name) {
             super(name);
         }
-
-        @Override
-        public Object clone() {
-            return null;
-        }
     }
 
     @Test

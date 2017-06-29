@@ -23,7 +23,7 @@ public abstract class AbstractUnit extends AbstractEnterpriseUnit {
         this.name = name;
     }
 
-    public void add(AbstractEnterpriseUnit childNode) throws NullPointerException{
+    public boolean add(AbstractEnterpriseUnit childNode) throws NullPointerException{
 
         if (childNode == null){
             throw new NullPointerException("ChildNode darf nicht NULL sein!");
@@ -32,6 +32,11 @@ public abstract class AbstractUnit extends AbstractEnterpriseUnit {
         if (!this.childNodes.contains(childNode)){
 
             this.childNodes.add(childNode);
+            return true;
+
+        } else {
+
+            return false;
         }
     }
 
