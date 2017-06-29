@@ -1,4 +1,4 @@
-public abstract class AbstractEnterpriseUnit implements EnterpriseNode, Comparable, Cloneable {
+public abstract class AbstractEnterpriseUnit implements EnterpriseNode, Comparable {
 
     protected String name;
 
@@ -8,11 +8,11 @@ public abstract class AbstractEnterpriseUnit implements EnterpriseNode, Comparab
 
     public AbstractEnterpriseUnit(String name) throws NullPointerException, IllegalArgumentException{
 
-        if (name == null){
+        if (name == null) {
             throw new NullPointerException("Name darf nicht NULL sein!");
         }
 
-        if (name == ""){
+        if (name == "") {
             throw new IllegalArgumentException("Name darf nicht leer sein!");
         }
 
@@ -24,9 +24,22 @@ public abstract class AbstractEnterpriseUnit implements EnterpriseNode, Comparab
         return this.name;
     }
 
-    public boolean equals(AbstractEnterpriseUnit o){
+    @Override
+    public boolean equals(Object o) {
 
-        return o.getName().equals(this.name);
+        AbstractEnterpriseUnit abstractEnterpriseUnit;
+
+        if (o instanceof AbstractEnterpriseUnit) {
+
+            abstractEnterpriseUnit = (AbstractEnterpriseUnit) o;
+            return abstractEnterpriseUnit.getName().equals(this.name);
+
+        } else {
+
+            return false;
+        }
+
+
     }
 
     @Override
@@ -50,16 +63,4 @@ public abstract class AbstractEnterpriseUnit implements EnterpriseNode, Comparab
             return 1;
         }
     }
-
-    public Object clone() {
-
-
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
 }

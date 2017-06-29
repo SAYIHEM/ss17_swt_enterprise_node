@@ -32,7 +32,9 @@ public class Main {
             unit.add(au);
         }
 
-        unit.remove(childNodes.get(0));
+        System.out.println(unit.remove(childNodes.get(0)));
+        System.out.println(childNodes.get(0).compareTo(childNodes.get(0)));
+        System.out.println(childNodes.contains(childNodes.get(0)));
 
 
     }

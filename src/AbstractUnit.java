@@ -2,7 +2,9 @@ import java.util.*;
 
 public abstract class AbstractUnit extends AbstractEnterpriseUnit {
 
-    protected Set<AbstractEnterpriseUnit> childNodes = new TreeSet<AbstractEnterpriseUnit>();
+    private int count = 0;
+
+    private Set<AbstractEnterpriseUnit> childNodes = new HashSet<AbstractEnterpriseUnit>();
 
     public AbstractUnit(){
 
@@ -38,8 +40,6 @@ public abstract class AbstractUnit extends AbstractEnterpriseUnit {
         if (childNode == null){
             throw new NullPointerException("ChildNode darf nicht NULL sein!");
         }
-
-        AbstractEnterpriseUnit object = childNode;
 
         if (this.childNodes.contains(childNode)) {
 
